@@ -1,3 +1,3 @@
 index.html
 main.js 
-Are located in /app
+are located in /app

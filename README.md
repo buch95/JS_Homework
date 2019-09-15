@@ -1,2 +1,3 @@
 # JS_Homework
- prog
+ S.Buchel
+ 

@@ -4,6 +4,12 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title Document
+        link(rel="stylesheet", href="css/style.css")
+        title Homework 1
     body
+        form(class= "wow")
+            input(type="text", placeholder="Name", id="name", required)
+            input(type="email", placeholder="Email", id="email", required)
+            input(type="date", id="date", required)
+            button(type="submit") Submit
         script(src="main.js")

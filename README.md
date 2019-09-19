@@ -1,3 +1,1 @@
-index.html
-main.js 
-are located in /app
+Updated to Homework 2

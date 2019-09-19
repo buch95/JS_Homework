@@ -1,6 +1,13 @@
 let form = document.getElementsByClassName('wow');
 let userData = [];
 
+function deleteElement(e) {
+    if(e.target.id.indexOf('del') > -1){
+        delete e.target.parentElement.parentElement.remove();
+    }
+    console.log(e.target);
+}
+
 function renderUsers(userData) {
     let htmlStr = ``;
     for (let i in userData) {
@@ -10,15 +17,24 @@ function renderUsers(userData) {
             <td>${userData[i].email}</td>
             <td>${userData[i].date}</td>
             <td><img src="${userData[i].picture}"></td>
-            <td><button type="button" id="del" onclick="userData.splice(i, i)"><img src="img/cross.png"></button>
+            <td><button type="button" id="del"><img src="img/cross.png"></button>
         </tr>`
+        
     }
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
     document.getElementById('date').value = '';
     document.getElementById('picture').value = '';
     document.querySelector('tbody').innerHTML = htmlStr; 
+
+    // for(let el of document.getElementById('del')){
+    //     el.addEventListener('click', function(e){
+    //         el.currentTarget.parentElement.parentElement.remove();
+    //     })
+    
 }
+
+
 
 // document.querySelector('form.wow').addEventListener('submit', function (e) {
 //     e.preventDefault();
@@ -60,4 +76,8 @@ function addUser(e) {
 }
 document.getElementById('submit').addEventListener('click', addUser);
 
-    
+
+
+// function del{
+//     userData.splice
+// }

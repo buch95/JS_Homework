@@ -7,9 +7,22 @@ html(lang="en")
         link(rel="stylesheet", href="css/style.css")
         title Homework 1
     body
-        form(class= "wow")
-            input(type="text", placeholder="Name", id="name", required)
-            input(type="email", placeholder="Email", id="email", required)
-            input(type="date", id="date", required)
-            button(type="submit") Submit
-        script(src="main.js")
+        div(class="wrapper")
+            form(class= "wow")
+                input(type="text", placeholder="Name", id="name")
+                input(type="email", placeholder="Email", id="email")
+                input(type="date", id="date")
+                input(type="text", placeholder="Input photo url", id="picture")
+                button(type="submit", id="submit") Submit
+            table
+                thead
+                    tr
+                        td(class="num") #
+                        td(class="user") User
+                        td(class="date") Email
+                        td(class="email") Date
+                        td(class="photo") Picture
+                        td(class="delete") Del
+                tbody
+
+        script(type="text/javascript", src="main.js")

@@ -1,9 +1,39 @@
 .wow{
-    border: 1px solid;
     display: block;
     width: 500px;
     margin: auto;
     button{
         width: 100%;
     }
+    #picture{
+        width: 99%;
+    }
+}
+div{
+    position: relative;
+}
+
+table{
+    text-align: center;
+    display: block;
+    width: 75%;
+    margin: auto;
+    td.num{
+        width: 5%;
+    }
+    td.user{
+        width: 20%;
+    }
+    td.date{
+        width: 20%;
+    }
+    td.email{
+        width: 20%;
+    }
+    td.photo{
+        width: 35%;
+        overflow: hidden;
+    }
+    
+
 }

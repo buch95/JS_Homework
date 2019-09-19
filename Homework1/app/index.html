@@ -8,12 +8,28 @@
     <title>Homework 1</title>
   </head>
   <body>
-    <form class="wow">
-      <input type="text" placeholder="Name" id="name" required="required"/>
-      <input type="email" placeholder="Email" id="email" required="required"/>
-      <input type="date" id="date" required="required"/>
-      <button type="submit">Submit</button>
-    </form>
-    <script src="main.js"></script>
+    <div class="wrapper">
+      <form class="wow">
+        <input type="text" placeholder="Name" id="name"/>
+        <input type="email" placeholder="Email" id="email"/>
+        <input type="date" id="date"/>
+        <input type="text" placeholder="Input photo url" id="picture"/>
+        <button type="submit" id="submit">Submit</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <td class="num">#</td>
+            <td class="user">User</td>
+            <td class="date">Email</td>
+            <td class="email">Date</td>
+            <td class="photo">Picture</td>
+            <td class="delete">Del</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

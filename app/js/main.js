@@ -2,11 +2,10 @@ let form = document.getElementsByClassName('wow');
 let userData = [];
 
 function deleteElement(e) {
-    if(e.target.id.indexOf('del') > -1){
-        delete e.target.parentElement.parentElement.remove();
+    if($(e.target).hasClass('remove-btn')){
+    e.currentTarget.remove();
     }
-    console.log(e.target);
-}
+};
 
 function renderUsers(userData) {
     let htmlStr = ``;
@@ -17,7 +16,7 @@ function renderUsers(userData) {
             <td>${userData[i].email}</td>
             <td>${userData[i].date}</td>
             <td><img src="${userData[i].picture}"></td>
-            <td><button type="button" id="del"><img src="img/cross.png"></button>
+            <td><button class="remove-btn"><img src="img/cross.png></img></button></td>
         </tr>`
         
     }
@@ -75,6 +74,8 @@ function addUser(e) {
     renderUsers(userData);
 }
 document.getElementById('submit').addEventListener('click', addUser);
+
+$('table tbody').on('click', deleteElement)
 
 
 

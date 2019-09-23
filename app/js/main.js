@@ -3,7 +3,7 @@ let userData = [];
 
 function deleteElement(event) {
     if($(event.target).hasClass('del')){
-    $(event.target.parents('tr').remove());
+    $(event.target).parents('tr').remove();
     }
 };
 
@@ -12,7 +12,7 @@ function renderUsers(userData   ) {
     for (let i in userData) {
         htmlStr += `<tr>    
             <td>${+i + 1}</td>
-            <td>${userData[i].name}</td>
+            <td>${userData[i].name}</td>    
             <td>${userData[i].email}</td>
             <td>${userData[i].date}</td>
             <td><img src="${userData[i].picture}"></td>

@@ -1,16 +1,16 @@
 let form = document.getElementsByClassName('wow');
 let userData = [];
 
-function deleteElement(e) {
-    if($(e.target).hasClass('del')){
-    e.currentTarget.remove();
+function deleteElement(event) {
+    if($(event.target).hasClass('del')){
+    $(event.target.parents('tr').remove());
     }
 };
 
-function renderUsers(userData) {
+function renderUsers(userData   ) {
     let htmlStr = ``;
     for (let i in userData) {
-        htmlStr += `<tr>
+        htmlStr += `<tr>    
             <td>${+i + 1}</td>
             <td>${userData[i].name}</td>
             <td>${userData[i].email}</td>
@@ -31,7 +31,7 @@ function renderUsers(userData) {
     //         el.currentTarget.parentElement.parentElement.remove();
     //     })
     
-}
+}   
 
 
 

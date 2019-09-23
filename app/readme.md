@@ -1,2 +1,2 @@
-jsontable - Currency table from nbu
+jsontable - Currency table from nbu <br>
 index - own table with add/remove functions

@@ -2,7 +2,7 @@ let form = document.getElementsByClassName('wow');
 let userData = [];
 
 function deleteElement(e) {
-    if($(e.target).hasClass('remove-btn')){
+    if($(e.target).hasClass('del')){
     e.currentTarget.remove();
     }
 };
@@ -16,7 +16,7 @@ function renderUsers(userData) {
             <td>${userData[i].email}</td>
             <td>${userData[i].date}</td>
             <td><img src="${userData[i].picture}"></td>
-            <td><button class="remove-btn"><img src="img/cross.png></img></button></td>
+            <td><button class="del">Remove</button></td>
         </tr>`
         
     }
@@ -65,7 +65,7 @@ function addUser(e) {
             else {
                 if (!userCard.picture) {
                     alert('Please add your picture');
-                    
+                    return;
                 }
             }
         }
@@ -75,7 +75,7 @@ function addUser(e) {
 }
 document.getElementById('submit').addEventListener('click', addUser);
 
-$('table tbody').on('click', deleteElement)
+$('table tbody').on('click', deleteElement);
 
 
 

@@ -6,6 +6,7 @@ function deleteElement(event) {
         var indx = $(event.target).closest('tr').index();
         userData.splice(indx, 1);
         $(event.target).parents('tr').remove();
+        renderUsers(userData);
     }
 };
 

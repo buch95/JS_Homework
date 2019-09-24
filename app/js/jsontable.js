@@ -1,3 +1,5 @@
+
+function loadCurrency(){
 $.ajax({
     url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json',
     method: 'GET',
@@ -6,7 +8,7 @@ $.ajax({
         $(data).each(function (i, currency) {
                     $('#jsontb').append($("<tr>")
                         .append($("<td>").append(currency.txt))
-                        .append($("<td>").append(currency.rate))
+                        .append($("<td>").append(currency.rate.toFixed(3)))
                         .append($("<td>").append(currency.cc))
                         .append($("<td>").append(currency.exchangedate)));
                 });
@@ -15,6 +17,9 @@ $.ajax({
         console.log(e);
     }
 });
+};
+
+$('.load-currencies').on('click', loadCurrency);
 
 // $.getJSON('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json', function (data) {
 //     // esli vivesti v consol: console.log(data)

@@ -2,36 +2,38 @@ let form = document.getElementsByClassName('wow');
 let userData = [];
 
 function deleteElement(event) {
-    if($(event.target).hasClass('del')){
-    $(event.target).parents('tr').remove();
+    if ($(event.target).hasClass('del')) {    
+        var indx = $(event.target).closest('tr').index();
+        userData.splice(indx, 1);
+        $(event.target).parents('tr').remove();
     }
 };
 
-function renderUsers(userData   ) {
+function renderUsers(userData) {    
     let htmlStr = ``;
     for (let i in userData) {
         htmlStr += `<tr>    
             <td>${+i + 1}</td>
             <td>${userData[i].name}</td>    
-            <td>${userData[i].email}</td>
+            <td>${userData[i].email}</td>   
             <td>${userData[i].date}</td>
             <td><img src="${userData[i].picture}"></td>
             <td><button class="del">Remove</button></td>
         </tr>`
-        
+
     }
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
     document.getElementById('date').value = '';
     document.getElementById('picture').value = '';
-    document.querySelector('tbody').innerHTML = htmlStr; 
-
+    document.querySelector('tbody').innerHTML = htmlStr;
+    
     // for(let el of document.getElementById('del')){
     //     el.addEventListener('click', function(e){
     //         el.currentTarget.parentElement.parentElement.remove();
     //     })
-    
-}   
+
+}
 
 
 

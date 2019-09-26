@@ -10,6 +10,7 @@ let renderCountriesHtml = (countries) => {
             <td>${country.region}</td>
             <td>${country.population}</td>
             <td>${country.area + " km²"}</td>
+            <td>${country.borders}</td>
             <td>${currenciesArray.join(', ')}</td>
             <td><img height="50" src="${country.flag}"></td>
         </tr>`;

@@ -41,3 +41,15 @@
     margin: 0;
     font-size: 30px;
 }
+
+.sorttable{
+    cursor: pointer;
+}
+
+.sorttable.active{
+    background: yellow;
+}
+
+.sorttable.active:not(.reverse){
+    content: 'Up';
+}

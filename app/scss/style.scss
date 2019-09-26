@@ -1,3 +1,14 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper{
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
 .wow{
     display: block;
     width: 500px;
@@ -8,9 +19,6 @@
     #picture{
         width: 99%;
     }
-}
-div{
-    position: relative;
 }
 
 table{
@@ -46,5 +54,15 @@ table{
     background-color: #CDCAC1;
     top: 0;
     right: 0;
+    border-radius: 5px;
+}
+.cntrs {
+    display: block;
+    position: absolute;
+    text-decoration: none;
+    font-size: 35px;
+    background-color: #CDCAC1;
+    top: 0;
+    left: 0;
     border-radius: 5px;
 }

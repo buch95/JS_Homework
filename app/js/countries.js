@@ -6,20 +6,11 @@ let renderCountriesHtml = (countries) => {
     }
     for(let country of countries) {
         country.borderNames = [];
-        // for(let border of country.borders) {
-        //     for(let countryObj of countries) {
-        //         if(border === countryObj['alpha3code']) {
-        //             country.borderNames.push(countryObj['name']);
-        //         }
-        //     }
-        // }
-        let currenciesArray = country.currencies.map(currency => currency.name);
+        for(let border of country.borders) {
+            country.borderNames.push(countriesTranslation[border])
+        }
+         let currenciesArray = country.currencies.map(currency => currency.name);
         let langArray = country.languages.map(language => language.name);
-                                                                // for(let i of borderArray){
-                                                                //     if(i === country.alpha3code){
-                                                                //         borderArray[i] = country.name;
-                                                                //     }
-                                                                // };
         htmlStr += `<tr>
             <td>${country.name}</td>
             <td>${country.capital}</td>
@@ -27,7 +18,7 @@ let renderCountriesHtml = (countries) => {
             <td>${country.region}</td>
             <td>${country.population}</td>
             <td>${country.area + " km²"}</td>
-            <td>${country.borderNames}</td>
+            <td>${country.borderNames.join(', ')}</td>
             <td>${currenciesArray.join(', ')}</td>
             <td><img height="50" src="${country.flag}"></td>
         </tr>`;
@@ -41,19 +32,57 @@ let loadCountries = e => {
         url: 'https://restcountries.eu/rest/v2/all',
         success: (response) => {
             renderCountriesHtml(response);
-            
+            sortTable();
         }
-    })
-}
+    });
+};
 
 let sortTable = e => {
-    let dataAttr = $(e.currentTarget).attr('data-attr');
-    countries.sort((a,b) =>{
-        return a[dataAttr] < b[dataAttr];
-    })
-
-    // renderCountriesHtml(countires.reverse());
-}
+    let savedSort = localStorage.getItem('currencies.sort');
+    let dataAttr = '';
+    let isActive = '';
+    let isReversed = '';
+ 
+    if(!e) {
+        if(savedSort) {
+            savedSort = JSON.parse(savedSort).data;
+            dataAttr = savedSort[0];
+            isActive = savedSort[1];
+            isReversed = savedSort[2];
+        } else {
+            renderCountriesHtml(countries);
+            return;
+        }
+    } else {
+        dataAttr = $(e.currentTarget).attr('data-attr');
+        isActive = $(e.currentTarget).hasClass('active');
+        isReversed = $(e.currentTarget).hasClass('reversed');
+    }
+ 
+    if(dataAttr) {
+        localStorage.setItem('currencies.sort', JSON.stringify({data: [dataAttr, isActive, isReversed]}));
+    }
+    $('td.sortable').removeClass('active');
+    $('td.sortable').removeClass('reversed');
+    if(e) {
+        $(e.currentTarget).addClass('active');
+    } else if(dataAttr) {
+        $(`.sortable[data-attr=${dataAttr}]`).addClass('active');
+    }
+    let sortedCountries = countries.sort((a, b) => {
+        return a[dataAttr] > b[dataAttr];
+    });
+    if(isActive && !isReversed) {
+        if(e) {
+            $(e.currentTarget).addClass('reversed');
+        } else if(dataAttr && isReversed) {
+            $(`.sortable[data-attr=${dataAttr}]`).addClass('reversed');
+        }
+        renderCountriesHtml(sortedCountries.reverse());
+    } else {
+        renderCountriesHtml(sortedCountries);
+    }
+};
 
 // $('.load-countries').click(loadCountries);
 loadCountries();

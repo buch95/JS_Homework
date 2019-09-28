@@ -1,8 +1,19 @@
+*{
+    box-sizing: border-box;
+}
+
+
 
 .load-currencies{
     position: absolute;
-    top: 0s;
+    top: 0;
     font-size: 30px;
+}
+
+.curDate{
+    position: absolute;
+    top: 50px;
+    width: 206px;
 }
 
 

@@ -1,11 +1,12 @@
 
-$('.curDate').focus(function (){this.type='date'}) // call before or at the end?
+ $('.curDate').focus(function (){this.type='date'}) // call before or at the end?
 
 function loadCurrency(){
-    $('table').show(100);    // how to do slide in from top? .slideDown( function(){.show}) || opposite?
+    $('table tbody tr').remove();
+    $('table').show();    // how to do slide in from top? .slideDown( function(){.show}) || opposite?
     let reqDate = $('.curDate').val().split('-').join(''); //cascade
     if(reqDate === ''){
-        let d = new Date();
+        let d = new Date(); 
         let day = d.getDate();
         let mnth = d.getMonth() +1; // starts from 0, so + 1
         if(mnth < 10){
@@ -13,14 +14,15 @@ function loadCurrency(){
         }
         let year = d.getFullYear();
         reqDate = [year, mnth, day].join(''); 
-    } 
-
-    console.log(reqDate);
+    };
 
 $.ajax({
     url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=' + reqDate + '&json',
     method: 'GET',
     success: (data) => {
+        if(data.length === 0){
+            $('.curDate').val('');
+        }
         let htmlStr = '';
         for(let i of data){
             htmlStr += `<tr>
@@ -31,13 +33,6 @@ $.ajax({
                 </tr>`;
         }
         $('table tbody').html(htmlStr);
-        // $(data).each(function (i, currency) {
-        //             $('#jsontb').append($("<tr>")
-        //                 .append($("<td>").append(currency.txt))
-        //                 .append($("<td>").append(currency.rate.toFixed(3)))
-        //                 .append($("<td>").append(currency.cc))
-        //                 .append($("<td>").append(currency.exchangedate)));
-        //         });
     },
     error: (e) => {
         console.log(e);
@@ -45,8 +40,11 @@ $.ajax({
 });
 };
 
-
 $('table').hide();
+$('.curDate').change(function(){
+    loadCurrency();
+});
+// loadCurrency();
 
 $('.load-currencies').on('click', loadCurrency);
 

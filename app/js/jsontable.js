@@ -14,6 +14,7 @@ function loadCurrency() {
             mnth = '0' + mnth;
         }
         reqDate = [d.getFullYear(), mnth, d.getDate()].join('');
+        // reqDate = "${ d.getFullYear() }${ mnth }${ d.getDate() }" Concatenation through html (htmlof Fullyear + mnth + getDate)
     };
     localStorage.setItem("date", reqDate);
     dateStorage = localStorage.getItem("date");

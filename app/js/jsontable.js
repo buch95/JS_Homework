@@ -1,9 +1,9 @@
 
 $('.curDate').focus(function () { this.type = 'date' })         // call before or at the end?
+let reqDate = 0;
+let dateStorage = [];
 
 function loadCurrency() {
-    let reqDate = 0;
-    let dateStorage = [];
     $('table tbody tr').remove();
     $('table').show();                                          // how to do slide in from top? .slideDown( function(){.show}) || opposite?
     reqDate = $('.curDate').val().split('-').join('');          //cascade

@@ -4,6 +4,8 @@ let reqDate = 0;
 let dateStorage = [];
 
 function loadCurrency() {
+    let reqDate = 0;
+    let dateStorage = [];
     $('table tbody tr').remove();
     $('table').show();                                          // how to do slide in from top? .slideDown( function(){.show}) || opposite?
     reqDate = $('.curDate').val().split('-').join('');          //cascade
@@ -18,6 +20,7 @@ function loadCurrency() {
     };
     localStorage.setItem("date", reqDate);
     dateStorage = localStorage.getItem("date");
+    
 
     let appendData = e =>{
             if (e.length === 0) {

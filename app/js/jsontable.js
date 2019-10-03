@@ -60,10 +60,10 @@ function loadCurrency() {
         url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=' + dateStorage + '&json',
         method: 'GET',
         success: (data) => {
-            if(textVal === ''){
-            appendData(data);
-            }else {
-            filterInput(data);
+            if (textVal === '') {
+                appendData(data);
+            } else {
+                filterInput(data);
             }
         },
         error: (e) => {
@@ -72,23 +72,31 @@ function loadCurrency() {
     });
 };
 
-
-
 $('table').hide();
+
+
 $('.curDate').change(function () {
     loadCurrency();
 });
-$('.curInput').change(function () {
+
+$('.curInput').on('keypress', function () {
     textVal = $('.curInput').val().toLowerCase();
     loadCurrency();
-})
-// loadCurrency();
+});
+
 $('.load-currencies').on('click', loadCurrency);
 
-
-
-
-// $('.curInput')
+// $('curInput').each(function () {
+//     let elem = $(this);
+//     elem.data('oldVal', elem.val());
+//     elem.bind("propertychange change click keyup input paste", function (event) {
+//         if (elem.data('oldVal') != elem.val()) {
+//             elem.data('oldVal', elem.val());
+//             textVal = $('.curInput').val().toLowerCase();
+//             loadCurrency();
+//         }
+//     })
+// });
 
 
 

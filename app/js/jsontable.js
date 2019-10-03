@@ -78,7 +78,7 @@ $('.curDate').change(function () {
 });
 $('.curInput').change(function () {
     textVal = $('.curInput').val().toLowerCase();
-
+    loadCurrency();
 })
 // loadCurrency();
 $('.load-currencies').on('click', loadCurrency);

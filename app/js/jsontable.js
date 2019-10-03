@@ -79,7 +79,7 @@ $('.curDate').change(function () {
     loadCurrency();
 });
 
-$('.curInput').on('keypress', function () {
+$('.curInput').on('keyup', function () {
     textVal = $('.curInput').val().toLowerCase();
     loadCurrency();
 });

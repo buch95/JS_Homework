@@ -1,13 +1,11 @@
-
-
 let reqDate = 0;
 let dateStorage = [];
 let textVal = '';
 
 $('.curDate').focus(function () { this.type = 'date' });
-$('.curInput').on("keypress", function () { return (event.keyCode > 1071 && event.keyCode < 1112) || (event.keyCode > 1029 && event.keyCode < 1132) }); // only cyrillic letters
-
-
+$('.curInput').on("keypress", function () {
+    return (event.keyCode > 1071 && event.keyCode < 1112) || (event.keyCode > 1029 && event.keyCode < 1132)
+}); // only cyrillic letters
 
 function loadCurrency() {
     $('table tbody tr').remove();
@@ -79,12 +77,17 @@ $('.curDate').change(function () {
     loadCurrency();
 });
 
-$('.curInput').on('keyup', function () {
+$('.curInput').on('keyup change', function () {
     textVal = $('.curInput').val().toLowerCase();
     loadCurrency();
 });
 
 $('.load-currencies').on('click', loadCurrency);
+
+
+
+
+
 
 // $('curInput').each(function () {
 //     let elem = $(this);
@@ -97,13 +100,6 @@ $('.load-currencies').on('click', loadCurrency);
 //         }
 //     })
 // });
-
-
-
-
-
-
-
 
 // $.getJSON('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json', function (data) {
 //     // esli vivesti v consol: console.log(data)

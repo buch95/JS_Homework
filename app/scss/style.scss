@@ -50,6 +50,7 @@ table{
     display: block;
     position: absolute;
     text-decoration: none;
+    color: inherit;
     font-size: 35px;
     background-color: #CDCAC1;
     top: 0;
@@ -60,9 +61,10 @@ table{
     display: block;
     position: absolute;
     text-decoration: none;
+    color: inherit;
     font-size: 35px;
     background-color: #CDCAC1;
-    top: 0;
-    left: 0;
+    top: 50px;
+    right: 0;
     border-radius: 5px;
 }

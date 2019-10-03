@@ -25,21 +25,21 @@ function loadCurrency() {
     localStorage.setItem("date", reqDate);
     dateStorage = localStorage.getItem("date");
 
-    // let appendData = e => {
-    //     if (e.length === 0) {
-    //         alert("No data available for " + $('.curDate').val());
-    //     }
-    //     let htmlStr = '';
-    //     for (let i of e) {
-    //         htmlStr += `<tr>
-    //             <td>${i.txt}</td>
-    //             <td>${i.rate.toFixed(3)}</td>
-    //             <td>${i.cc}</td>
-    //             <td>${i.exchangedate}</td>
-    //             </tr>`;
-    //     }
-    //     $('table tbody').html(htmlStr);
-    // }
+    let appendData = e => {
+        if (e.length === 0) {
+            alert("No data available for " + $('.curDate').val());
+        }
+        let htmlStr = '';
+        for (let i of e) {
+            htmlStr += `<tr>
+                <td>${i.txt}</td>
+                <td>${i.rate.toFixed(3)}</td>
+                <td>${i.cc}</td>
+                <td>${i.exchangedate}</td>
+                </tr>`;
+        }
+        $('table tbody').html(htmlStr);
+    }
 
     let filterInput = e => {
         let htmlStr = '';
@@ -60,8 +60,11 @@ function loadCurrency() {
         url: 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=' + dateStorage + '&json',
         method: 'GET',
         success: (data) => {
-            // appendData(data);
+            if(textVal === ''){
+            appendData(data);
+            }else {
             filterInput(data);
+            }
         },
         error: (e) => {
             console.log(e);

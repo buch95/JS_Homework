@@ -1,17 +1,18 @@
 
-$('.curDate').focus(function () { this.type = 'date' })         // call before or at the end?
 let reqDate = 0;
 let dateStorage = [];
 
+$('.curDate').focus(function () { this.type = 'date' });
+$('.curInput').on("keypress", function () { return (event.keyCode > 1071 && event.keyCode < 1112) || (event.keyCode > 1029 && event.keyCode < 1132) }); // only cyrillic letters
+
+
 function loadCurrency() {
-    let reqDate = 0;
-    let dateStorage = [];
     $('table tbody tr').remove();
-    $('table').show();                                          // how to do slide in from top? .slideDown( function(){.show}) || opposite?
-    reqDate = $('.curDate').val().split('-').join('');          //cascade
+    $('table').show();
+    reqDate = $('.curDate').val().split('-').join('');
     if (reqDate === '') {
         let d = new Date();
-        let mnth = d.getMonth() + 1;                            // starts from 0, so + 1
+        let mnth = d.getMonth() + 1;
         if (mnth < 10) {
             mnth = '0' + mnth;
         }
@@ -20,22 +21,22 @@ function loadCurrency() {
     };
     localStorage.setItem("date", reqDate);
     dateStorage = localStorage.getItem("date");
-    
 
-    let appendData = e =>{
-            if (e.length === 0) {
-                alert("No data available for " + $('.curDate').val());
-            }
-            let htmlStr = '';
-            for (let i of e) {
-                htmlStr += `<tr>
+
+    let appendData = e => {
+        if (e.length === 0) {
+            alert("No data available for " + $('.curDate').val());
+        }
+        let htmlStr = '';
+        for (let i of e) {
+            htmlStr += `<tr>
                 <td>${i.txt}</td>
                 <td>${i.rate.toFixed(3)}</td>
                 <td>${i.cc}</td>
                 <td>${i.exchangedate}</td>
                 </tr>`;
-            }
-            $('table tbody').html(htmlStr);
+        }
+        $('table tbody').html(htmlStr);
     }
 
     $.ajax({
@@ -50,17 +51,30 @@ function loadCurrency() {
     });
 };
 
+
+
+let dataFilter = e => {
+    e.forEach(element => {
+
+    });
+}
+
+
 $('table').hide();
 $('.curDate').change(function () {
     loadCurrency();
 });
+$('.curInput').change(function () {
+    let textVal = $('.curInput').val();
+    console.log(textVal);
+})
 // loadCurrency();
- $('.load-currencies').on('click', loadCurrency);
+$('.load-currencies').on('click', loadCurrency);
 
 
 
 
-
+// $('.curInput')
 
 
 

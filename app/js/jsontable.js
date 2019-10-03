@@ -42,19 +42,18 @@ function loadCurrency() {
     // }
 
     let filterInput = e => {
+        let htmlStr = '';
         for (let i of e) {
-            if (i.txt.toLowerCase().indexOf(textVal) != -1) {   //esli est takoi text v pole to index budet ne 0, znachit vivesti na ekran
-                console.log(i.txt);
-                let htmlStr = '';
-                    htmlStr += `<tr>
+            if (i.txt.toLowerCase().indexOf(textVal) != -1) {       //esli est takoi text v pole to index budet ne 0, znachit vivesti na ekran
+                htmlStr += `<tr>
                     <td>${i.txt}</td>
                     <td>${i.rate.toFixed(3)}</td>
                     <td>${i.cc}</td>
                     <td>${i.exchangedate}</td>
                     </tr>`;
-                $('table tbody').html(htmlStr);
             }
         }
+        $('table tbody').html(htmlStr);
     }
 
     $.ajax({

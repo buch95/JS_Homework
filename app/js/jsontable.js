@@ -85,7 +85,7 @@ $('.curInput').on('keyup change', function () {
 $('.load-currencies').on('click', loadCurrency);
 
 
-
+    
 
 
 

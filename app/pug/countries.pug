@@ -9,6 +9,11 @@ html(lang="en")
     body
         a(href="index.html", class="jsont") Go back
         button(class='load-countries') Load table
+        span Search by:
+        select
+            option(value="Country") Country
+            option(value="Capital") Capital
+        input(type="text", class="filterby", placeholder="Search here")
         table(border="1" class="countries")
             thead
                 tr
@@ -18,10 +23,10 @@ html(lang="en")
                     td Region
                     td(class='sorttable', data-attr='population') Population
                     td(class='sorttable', data-attr='area') Area
-                    td Borders
                     td Currency
                     td Flag
             tbody
+        
         script(
             src="https://code.jquery.com/jquery-3.4.1.min.js",
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=",

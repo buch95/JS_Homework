@@ -8,7 +8,12 @@
     <title>Countries</title>
   </head>
   <body><a class="jsont" href="index.html">Go back</a>
-    <button class="load-countries">Load table</button>
+    <button class="load-countries">Load table</button><span>Search by:</span>
+    <select>
+      <option value="Country">Country</option>
+      <option value="Capital">Capital</option>
+    </select>
+    <input class="filterby" type="text" placeholder="Search here"/>
     <table class="countries" border="1">
       <thead>
         <tr>
@@ -18,7 +23,6 @@
           <td>Region</td>
           <td class="sorttable" data-attr="population">Population</td>
           <td class="sorttable" data-attr="area">Area</td>
-          <td>Borders</td>
           <td>Currency</td>
           <td>Flag</td>
         </tr>

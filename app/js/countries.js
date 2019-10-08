@@ -1,4 +1,4 @@
-textVal = $('.filterby').val();
+
 
 let renderCountriesHtml = (countries) => {
     let htmlStr = '';
@@ -28,7 +28,7 @@ let renderCountriesHtml = (countries) => {
 };
 
 let filterInput = e => {
-    $('table.countries tbody').remove();
+    $('table tbody tr').remove();
     let htmlStr = '';
     let selectIndex = $('select').prop('selectedIndex');
     console.log(selectIndex);
@@ -84,6 +84,11 @@ let loadCountries = e => {
         }
     });
 };
+
+$('.filterby').on('keyup change', function () {
+    textVal = $('.filterby').val().toLowerCase();
+    loadCountries();
+});
 
 // let sortTable = e => {
 //     let savedSort = localStorage.getItem('currencies.sort');

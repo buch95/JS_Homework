@@ -85,11 +85,6 @@ let loadCountries = e => {
     });
 };
 
-$('.filterby').on('keyup change', function () {
-    textVal = $('.filterby').val().toLowerCase();
-    loadCountries();
-});
-
 // let sortTable = e => {
 //     let savedSort = localStorage.getItem('currencies.sort');
 //     let dataAttr = '';
@@ -136,6 +131,11 @@ $('.filterby').on('keyup change', function () {
 //         renderCountriesHtml(sortedCountries);
 //     }
 // };
+
+$('.filterby').on('keyup change', function () {
+    textVal = $('.filterby').val().toLowerCase();
+    loadCountries();
+});
 
 $('.load-countries').click(loadCountries);
 // loadCountries();
